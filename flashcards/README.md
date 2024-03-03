@@ -1,8 +1,8 @@
-# Web Development Project 2 - *Name of App Here*
+# Web Development Project 2 - Flashcards Pt. 1: Guess the Celebrity
 
 Submitted by: Michelle Duong
 
-This web app: Flashcards -- Guess the Celebrity
+This web app: Flashcards: Guess the Celebrity, allows users to play a fun, interactive game to learn different faces in the entertainment industry.
 
 Time spent: 2.5 hours spent in total
 
@@ -34,6 +34,7 @@ GIF created with ScreenToGif
 ## Notes
 
 Describe any challenges encountered while building the app.
+I had difficulty figuring out how to make the flashcards flip and connect properly to the main app.
 
 ## License
 
