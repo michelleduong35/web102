@@ -5,15 +5,32 @@ import Flashcard from './Flashcard';
 function App() {
   const [currentCardID, setCount] = useState(1)
   const [isFlipped, setIsFlipped] = useState(false);
+  const [form, setForm] = useState({
+    userAns: '',
+    isCorrect: null
+  });
 
   const updateLeft = () => {
     setCount(prevId => prevId === 1 ? flashcards.length : prevId - 1);
     setIsFlipped(false);
+    setForm({ ...form, isCorrect: null, userAns: ''});
   }
 
   const updateRight = () => {
     setCount(prevId => prevId === flashcards.length ? 1 : prevId + 1);
     setIsFlipped(false);
+    setForm({ ...form, isCorrect: null, userAns: ''});
+  }
+
+  const checkAnswer = (e) => {
+    e.preventDefault();
+    const currentFlashcard = flashcards.find(card => card.id === currentCardID);
+    const isCorrect = form.userAns.toLowerCase() === currentFlashcard.answer.toLowerCase();
+    setForm({ ...form, isCorrect });
+  }
+
+  const handleForm = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value });
   }
 
   const flashcards = [
@@ -76,6 +93,18 @@ function App() {
       <div className="flashcardView">
       <Flashcard flashcard={flashcards.find(card => card.id === currentCardID)} isFlipped={isFlipped} setIsFlipped={setIsFlipped} />
       </div>
+      <form onSubmit={checkAnswer}>
+        <label htmlFor='userAns'>Who is this? </label>
+        <input
+          value={form.userAns}
+          onChange={handleForm}
+          type="text" 
+          name="userAns" 
+          id="userAns" 
+          className={form.isCorrect === true ? 'correct' : form.isCorrect === false ? 'incorrect' : ''}
+          />
+        <input type="submit" />
+      </form>
       <div className="navButtons">
         <button onClick={updateLeft}>⬅️</button>
         <button onClick={updateRight}>➡️</button>

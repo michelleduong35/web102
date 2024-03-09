@@ -100,3 +100,22 @@
   align-items: center;
   font-size: xx-large;
 }
+
+/* Basic input styles */
+input[type="text"] {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+/* Green border for correct input */
+input[type="text"].correct {
+  border-color: green;
+}
+
+/* Red border for incorrect input */
+input[type="text"].incorrect {
+  border-color: red;
+}
