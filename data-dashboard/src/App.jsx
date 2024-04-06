@@ -4,6 +4,8 @@ import './App.css'
 function App() {
   const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
   const [list, setList] = useState(null)
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -30,6 +32,11 @@ function App() {
   return (
     <div className="whole-page">
       <h1>Weather in London, UK</h1>
+      <input
+        type="text"
+        placeholder="Search..."
+        onChange={(inputString) => searchItems(inputString.target.value)}
+      />
       {list && (
         <div>
           <div className='stats'>
